@@ -5,16 +5,14 @@ import { IoIosArrowDown } from "react-icons/io"
 export default function Button(props){
     const pathname=usePathname()
     return(
-        <div className={`flex gap-2 items-center px-4 py-1 border-2 rounded-md text-xl cursor-pointer ${pathname == props.pathName ? "bg-[#1D4ED8] border-[#1D4ED8]" : "bg-[#1E1B4B] border-[#1E1B4B]"} `}>
+        <div className={`flex gap-2 items-center border-2 rounded-md text-xl  ${pathname == props.pathName ? props.activeClassName : props.primaryClassName} `}>
             {
                 props.arrow ? (
                     <>
-                    <Link className={`${pathname=== props.pathName ? "text-[#FFFFFF]" : ""}`} href={props.pathName}>{props.text}</Link>
-                    <IoIosArrowDown />
+                    <Link className={`flex gap-2 items-center px-4 py-1 ${pathname=== props.pathName ? "text-[#FFFFFF]" : ""}`} href={props.pathName}> <span>{props.text} </span> <IoIosArrowDown /></Link>
                     </>
                 ):(
-                    <Link className={`${pathname=== props.pathName ? "text-[#FFFFFF]" : ""}`} href={props.pathName}>{props.text}</Link>
-                    
+                    <Link className={`px-4 py-1 ${pathname=== props.pathName ? "text-[#FFFFFF]" : ""}`} href={props.pathName}>{props.text}</Link>
                 )
             }
         </div>

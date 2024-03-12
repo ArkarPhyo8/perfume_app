@@ -14,11 +14,11 @@ export default function SearchNavbar(){
             </div>
          </div>
 
-         <div className="flex gap-5 items-center justify-center text-white ">
-           <Button text="All" pathName="/all" />
-           <Button text="Category" arrow="arrow" pathName="/category" />
-           <Button text="Choose price" arrow="arrow" pathName="/choosePrice" />
-           <Button text="Choose people" arrow="arrow" pathName="/choosePeople" />
+         <div className="flex gap-5 items-center justify-center text-white">
+           <Button activeClassName="bg-[#1D4ED8] border-[#1D4ED8] cursor-pointer" primaryClassName="bg-[#1E1B4B] border-[#1E1B4B] cursor-pointer" text="All" pathName="/all" />
+           <Button activeClassName="bg-[#1D4ED8] border-[#1D4ED8] cursor-pointer" primaryClassName="bg-[#1E1B4B] border-[#1E1B4B] cursor-pointer" text="Category" arrow="arrow" pathName="/category" />
+           <Button activeClassName="bg-[#1D4ED8] border-[#1D4ED8] cursor-pointer" primaryClassName="bg-[#1E1B4B] border-[#1E1B4B] cursor-pointer" text="Choose price" arrow="arrow" pathName="/choosePrice" />
+           <Button activeClassName="bg-[#1D4ED8] border-[#1D4ED8] cursor-pointer" primaryClassName="bg-[#1E1B4B] border-[#1E1B4B] cursor-pointer" text="Choose people" arrow="arrow" pathName="/choosePeople" />
          </div>
         </div>
         </>
