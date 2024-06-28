@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function BuyTable() {
   return (
-    <div className="bg-white col-span-3 rounded-md">
+    <div className="bg-white h-[70vh] pb-6 col-span-3 rounded-md">
       <div className="bg-[#1E1B4B] rounded-t border-b border-[#DB2777]">
         <h1 className="text-[#DB2777] text-lg text-center py-4">
           <span className="text-3xl">O</span>nline{" "}
@@ -34,21 +34,21 @@ export default function BuyTable() {
             <td className="px-4 py-2 text-center">4</td>
             <td className="px-4 py-2 text-right">24000 MMK</td>
             <td className="px-4 py-2 text-right">45000 MMK</td>
-          </tr>{" "}
+          </tr>
           <tr>
             <td className="px-4 py-2 text-center">3.</td>
             <td className="px-4 py-2 text-center">Perfume Name</td>
             <td className="px-4 py-2 text-center">1</td>
             <td className="px-4 py-2 text-right">24000 MMK</td>
             <td className="px-4 py-2 text-right">45000 MMK</td>
-          </tr>{" "}
+          </tr>
           <tr>
             <td className="px-4 py-2 text-center">4.</td>
             <td className="px-4 py-2 text-center">Perfume Name</td>
             <td className="px-4 py-2 text-center">6</td>
             <td className="px-4 py-2 text-right">24000 MMK</td>
             <td className="px-4 py-2 text-right">45000 MMK</td>
-          </tr>{" "}
+          </tr>
           <tr>
             <td className="px-4 py-2 text-center">5.</td>
             <td className="px-4 py-2 text-center">Perfume Name</td>

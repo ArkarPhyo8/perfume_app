@@ -1,9 +1,15 @@
+"use client";
 import Image from "next/image";
 import search from "../public/search.png";
 import cart from "../public/cart.png";
 import setting from "../public/setting.png";
 import Link from "next/link";
+import { CardProviderContext } from "@/ContextProvider/ContextProvider";
+import { useContext } from "react";
 export default function Navbar() {
+  //Buy State
+  const { buyCards } = useContext(CardProviderContext);
+  
   return (
     <>
       <header className="bg-[#1E1B4B] py-5 px-5 sticky top-0 z-50 border-b-2 border-[#1D4ED8]">
@@ -29,14 +35,26 @@ export default function Navbar() {
               <li>Promotions</li>
             </ul>
           </div>
+
           <div className="flex gap-5 items-center">
             <Image className="w-[30px] h-[30px]" src={search} alt="search" />
             <button className="bg-[#DB2777] px-3 py-1 rounded-md text-[#D9D9D9] text-xl">
               Log in
             </button>
+
             <Link href={"/buy_card"}>
-              <Image className="w-[30px] h-[30px]" src={cart} alt="cart" />
+              <div className="relative">
+                <Image className=" w-[30px] h-[30px]" src={cart} alt="cart" />
+                {buyCards.length > 0 && (
+                  <div className="bg-[#CC0000] w-[30px] min-w-fit h-[30px] min-h-fit rounded-full absolute -top-5 -right-4 text-center">
+                    <span className="text-white text-xl font-medium p-2">
+                      {buyCards.length}
+                    </span>
+                  </div>
+                )}
+              </div>
             </Link>
+
             <Image className="w-[30px] h-[30px]" src={setting} alt="setting" />
           </div>
         </div>
