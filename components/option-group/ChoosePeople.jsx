@@ -7,7 +7,6 @@ import { AiFillCaretUp } from "react-icons/ai";
 export default function ChoosePeople({setSelectedChoosePeople}) {
   const [choosePeopleClick, setChoosePeopleClick] = useState(false);
   const [choosePeople, setChoosePeople] = useState("");
-
   return (
     <>
       <li className="relative min-w-[180px] w-[250px]">

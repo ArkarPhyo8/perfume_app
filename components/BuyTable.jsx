@@ -1,3 +1,4 @@
+import Button from "@/lib/button";
 import Link from "next/link";
 
 export default function BuyTable() {
@@ -70,9 +71,7 @@ export default function BuyTable() {
 
       <div className="text-center mt-5">
         <Link href={"/payment_methods"}>
-          <button className="bg-button-color px-6 py-3 text-xl text-white font-semibold rounded">
-            Payment Methods
-          </button>
+          <Button text={"Payment Methods"}/>
         </Link>
       </div>
     </div>

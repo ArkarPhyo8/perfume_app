@@ -107,3 +107,25 @@ export const cardData = [
     image: "/perfume1.png",
   },
 ];
+
+//Payment Methods Data
+export const paymentNumberData=[
+  {
+    id:1,
+    name:"Owner Name",
+    phoneNumber:"09259649193",
+    image:"/k_pay.png",
+  },
+  {
+    id:2,
+    name:"Owner Name",
+    phoneNumber:"09259649193",
+    image:"/wave.png",
+  },
+  {
+    id:3,
+    name:"Owner Name",
+    phoneNumber:"09259649193",
+    image:"/mpu.png",
+  },
+]

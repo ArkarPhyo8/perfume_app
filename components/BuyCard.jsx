@@ -1,6 +1,8 @@
 "use client";
 import { CardProviderContext } from "@/ContextProvider/ContextProvider";
-import { useContext, useEffect } from "react";
+import Button from "@/lib/button";
+import Link from "next/link";
+import { useContext} from "react";
 import {
   AiOutlinePlusCircle,
   AiOutlineMinusCircle,
@@ -10,7 +12,6 @@ import {
 export default function BuyCard() {
   //buy card data from context provider
   const { buyCards,setBuyCards } = useContext(CardProviderContext);
-  console.log(buyCards);
   //Click to delete from card list
   const clickToDelete=(id)=>{
     const deleteCard=buyCards.filter(card=>card.id !== id);
@@ -20,7 +21,7 @@ export default function BuyCard() {
 
   return (
     <div className="col-span-2 space-y-4">
-      {buyCards && buyCards.map((card,index) => (
+      {buyCards.length > 0 ? buyCards.map((card,index) => (
         <div key={index} className="relative flex gap-1 w-full bg-[#1E1B4B] border-2 border-[#1E1B4B] rounded-md group">
           <div onClick={()=>clickToDelete(card.id)} className="absolute text-white text-xl rounded-full -right-2 -top-4 bg-[#CC0000] p-2 cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-300">
             <AiOutlineClose />
@@ -80,7 +81,18 @@ export default function BuyCard() {
             </div>
           </div>
         </div>
-      ))}
+      )): (
+        <div className="h-screen mt-[40%]">
+        <div className="flex flex-col gap-5 justify-center">
+        <div className="text-white text-xl">Can't Choose Cards</div>
+        <Link href={"/"}>
+        <Button text={"Choose Cards"}/>
+        </Link>
+          
+        </div>
+        </div>
+      )
+    }
     </div>
   );
 }
