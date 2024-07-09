@@ -3,8 +3,10 @@ import Link from "next/link";
 import { cardData } from "@/lib/data";
 import { CardProviderContext } from "@/ContextProvider/ContextProvider";
 import { useContext, useState } from "react";
+import { useSession } from "next-auth/react";
 
 export default function HomePage() {
+const {data:session} =  useSession()
   //search state
   const { searchText, searchResult, buyCards, setBuyCards } =
     useContext(CardProviderContext);

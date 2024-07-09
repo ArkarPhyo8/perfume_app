@@ -5,11 +5,14 @@ import cart from "../public/cart.png";
 import setting from "../public/setting.png";
 import Link from "next/link";
 import { CardProviderContext } from "@/ContextProvider/ContextProvider";
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
+import { signOut, useSession } from "next-auth/react";
+
 export default function Navbar() {
   //Buy State
   const { buyCards } = useContext(CardProviderContext);
-  
+  const { data: session } = useSession();
+
   return (
     <>
       <header className="bg-[#1E1B4B] py-5 px-5 sticky top-0 z-50 border-b-2 border-[#1D4ED8]">
@@ -38,9 +41,20 @@ export default function Navbar() {
 
           <div className="flex gap-5 items-center">
             <Image className="w-[30px] h-[30px]" src={search} alt="search" />
-            <button className="bg-[#DB2777] px-3 py-1 rounded-md text-[#D9D9D9] text-xl">
-              Log in
-            </button>
+            <Link href={"/login"}>
+              {session?.user?.name ? (
+                <button
+                  onClick={() => signOut()}
+                  className="bg-[#DB2777] px-3 py-1 rounded-md text-[#D9D9D9] text-xl"
+                >
+                  Sign Out
+                </button>
+              ) : (
+                <button className="bg-[#DB2777] px-3 py-1 rounded-md text-[#D9D9D9] text-xl">
+                  Sign In
+                </button>
+              )}
+            </Link>
 
             <Link href={"/buy_card"}>
               <div className="relative">
