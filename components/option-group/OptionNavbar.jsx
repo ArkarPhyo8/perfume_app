@@ -6,9 +6,8 @@ import Link from "next/link";
 import ChoosePrice from "./ChoosePrice";
 import ChoosePeople from "./ChoosePeople";
 import BrandName from "./BrandName";
-import { CardProviderContext } from "@/ContextProvider/ContextProvider";
+import { CardProviderContext } from "@/components/Providers/ContextProvider";
 export default function SearchNavbar() {
-
   //Option values collection
   const [selectedObjects, setSelectedObjects] = useState([]);
   //Option values
@@ -17,7 +16,8 @@ export default function SearchNavbar() {
   const [selectedChoosePeople, setSelectedChoosePeople] = useState("");
 
   //Home Page data to show all
-  const {setSearchText} = useContext(CardProviderContext)
+  const { setSearchText, setBrandName, setChoosePrice,setChoosePeople } =
+    useContext(CardProviderContext);
 
   useEffect(() => {
     setSelectedObjects([
@@ -28,7 +28,7 @@ export default function SearchNavbar() {
   }, [selectedBrandName, selectedChoosePrice, selectedChoosePeople]);
 
   //active color
-  const [changeBgColor, setChangeBgColor] = useState(false)
+  const [changeBgColor, setChangeBgColor] = useState(false);
 
   const clickToShowAll = () => {
     setSearchText("");
@@ -43,9 +43,22 @@ export default function SearchNavbar() {
           <ul className="flex gap-5 items-center justify-center text-white text-xl">
             <li
               onClick={clickToShowAll}
-              className={`border-2  px-4 py-1 rounded-md cursor-pointer transition-colors duration-200 ${changeBgColor ? "bg-[#5633f2] border-[#5633f2]" : "bg-[#1E1B4B] border-[#1E1B4B] hover:bg-[#6d54e0] hover:border-[#6d54e0]"}`}
+              className={`border-2  px-4 py-1 rounded-md cursor-pointer transition-colors duration-200 ${
+                changeBgColor
+                  ? "bg-[#5633f2] border-[#5633f2]"
+                  : "bg-[#1E1B4B] border-[#1E1B4B] hover:bg-[#6d54e0] hover:border-[#6d54e0]"
+              }`}
             >
-              <Link href={"/"}>All</Link>
+              <Link
+                href={"/"}
+                onClick={() => {
+                  setBrandName("");
+                  setChoosePrice("");
+                  setChoosePeople("");
+                }}
+              >
+                All
+              </Link>
             </li>
 
             <BrandName setSelectedBrandName={setSelectedBrandName} />

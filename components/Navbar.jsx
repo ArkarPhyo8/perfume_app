@@ -4,7 +4,7 @@ import search from "../public/search.png";
 import cart from "../public/cart.png";
 import setting from "../public/setting.png";
 import Link from "next/link";
-import { CardProviderContext } from "@/ContextProvider/ContextProvider";
+import { CardProviderContext } from "@/components/Providers/ContextProvider";
 import { Suspense, useContext } from "react";
 import { signOut, useSession } from "next-auth/react";
 

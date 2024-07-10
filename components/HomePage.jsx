@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
 import { cardData } from "@/lib/data";
-import { CardProviderContext } from "@/ContextProvider/ContextProvider";
+import { CardProviderContext } from "@/components/Providers/ContextProvider";
 import { useContext } from "react";
 
 export default function HomePage() {
   //search state
-  const { searchText, searchResult, buyCards, setBuyCards } =
+  const { searchText, searchResult, buyCards, setBuyCards, optionFilterData } =
     useContext(CardProviderContext);
 
   //click to Add Card
@@ -21,7 +21,7 @@ export default function HomePage() {
         return cart;
       }
     })[0];
-      console.log(buyCard);
+    console.log(buyCard);
     if (buyCards) {
       const check = buyCards.includes(buyCard);
       if (check) {
@@ -77,8 +77,8 @@ export default function HomePage() {
                           <span className="text-primary text-xl font-semibold">
                             Price -
                           </span>
-                          <span className="text-primary text-xl font-medium px-4">
-                            {card.price}
+                          <span className="text-primary text-xl font-medium px-1">
+                            {card.price.toLocaleString("en-Us")} ks
                           </span>
                         </div>
                         <Link
@@ -91,6 +91,61 @@ export default function HomePage() {
                       </div>
                       <button
                         onClick={() => clickToBuy(card.id)}
+                        className="bg-[#1D4ED8] text-white text-xl font-medium py-2 rounded-md hover:bg-[#19388e] transition-colors duration-200"
+                      >
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            : optionFilterData
+            ? optionFilterData.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-[#2E1065] p-3 rounded-md h-[500px]"
+                >
+                  <div className="h-full">
+                    <div className="bg-white w-full h-[200px] rounded-md">
+                      <img
+                        src={item.image}
+                        alt="perfume name"
+                        width={180}
+                        height={180}
+                        className="mx-auto"
+                      />
+                    </div>
+
+                    <div className="bg-[#1E1B4B] h-[280px] px-2 pt-4 pb-2 flex flex-col gap-3">
+                      <h1 className="text-primary text-xl font-semibold">
+                        {item.name}
+                      </h1>
+
+                      <p className="text-white h-[100px]">
+                        {item.description.length > 120
+                          ? item.description.substring(0, 120) + ". . ."
+                          : item.description}
+                      </p>
+
+                      <div className="flex justify-between">
+                        <div>
+                          <span className="text-primary text-xl font-semibold">
+                            Price -
+                          </span>
+                          <span className="text-primary text-xl font-medium px-1">
+                            {item.price.toLocaleString("en-Us")} ks
+                          </span>
+                        </div>
+                        <Link
+                          href={{ pathname: "/about", query: { id: item.id } }}
+                        >
+                          <button className="bg-primary py-2 px-4 rounded-md text-white font-semibold hover:bg-[#c21c69] transition-colors duration-200">
+                            Read More
+                          </button>
+                        </Link>
+                      </div>
+                      <button
+                        onClick={() => clickToBuy(item.id)}
                         className="bg-[#1D4ED8] text-white text-xl font-medium py-2 rounded-md hover:bg-[#19388e] transition-colors duration-200"
                       >
                         Add to Cart
@@ -131,11 +186,13 @@ export default function HomePage() {
                           <span className="text-primary text-xl font-semibold">
                             Price -
                           </span>
-                          <span className="text-primary text-xl font-medium px-4">
-                            {card.price}
+                          <span className="text-primary text-xl font-medium px-1">
+                            {card.price.toLocaleString("en-Us")} ks
                           </span>
                         </div>
-                        <Link href={{ pathname: "/about", query: { id: card.id } }}>
+                        <Link
+                          href={{ pathname: "/about", query: { id: card.id } }}
+                        >
                           <button className="bg-primary py-2 px-4 rounded-md text-white font-semibold hover:bg-[#c21c69] transition-colors duration-200">
                             Read More
                           </button>

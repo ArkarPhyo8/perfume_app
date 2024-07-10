@@ -1,5 +1,5 @@
 "use client";
-import { CardProviderContext } from "@/ContextProvider/ContextProvider";
+import { CardProviderContext } from "@/components/Providers/ContextProvider";
 import Button from "@/lib/button";
 import Link from "next/link";
 import { useContext } from "react";

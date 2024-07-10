@@ -1,12 +1,16 @@
-"use client"
-import { useState } from "react";
+"use client";
+import { useContext, useState } from "react";
 import { choosePriceData } from "@/lib/data";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiFillCaretUp } from "react-icons/ai";
+import { cardData } from "@/lib/data";
+import { CardProviderContext } from "../Providers/ContextProvider";
 
-export default function ChoosePrice({setSelectedChoosePrice}) {
+export default function ChoosePrice({ setSelectedChoosePrice }) {
+  const { choosePrice, setChoosePrice,setBrandName,setChoosePeople  } =
+    useContext(CardProviderContext);
   const [choosePriceClick, setChoosePriceClick] = useState(false);
-  const [choosePrice, setChoosePrice] = useState("");
+
   return (
     <>
       <li className="relative min-w-[180px] w-[250px]">
@@ -48,18 +52,20 @@ export default function ChoosePrice({setSelectedChoosePrice}) {
               <li
                 key={index}
                 className={`hover:bg-[#2E1065] rounded-md px-4 py-2 transition-all duration-200 ${
-                  choosePrice === item.name && "bg-[#1E1B4B]"
+                  choosePrice === item.price && "bg-[#1E1B4B]"
                 }`}
                 onClick={() => {
-                  setChoosePrice(item.name);
                   setChoosePriceClick(!choosePriceClick);
                   setSelectedChoosePrice({
                     id: item.id,
-                    name: item.name,
+                    price: item.price,
                   });
+                  setChoosePrice(item.price);
+                  setBrandName("")
+                  setChoosePeople("")
                 }}
               >
-                {item.name}
+                {item.price}
               </li>
             ))}
           </ul>

@@ -2,45 +2,45 @@
 export const brandNameData = [
   {
     id: 1,
-    name: "Hi",
+    name: "Perfume Hi",
   },
   {
     id: 2,
-    name: "Hello",
+    name: "Perfume Hello",
   },
   {
     id: 3,
-    name: "Hey",
+    name: "Perfume Hey",
   },
 ];
 //Select option choosePrice data
 export const choosePriceData = [
   {
     id: 1,
-    name: "Choose Price 1",
+    price: "10000 to 30000",
   },
   {
     id: 2,
-    name: "Choose Price 2",
+    price: "30000 to 90000",
   },
   {
     id: 3,
-    name: "Choose Price 3",
+    price: "90000 to 150000",
+  },
+  {
+    id: 4,
+    price: "150000 to 200000",
   },
 ];
 //Select option choosePeople data
 export const choosePeopleData = [
   {
     id: 1,
-    name: "choose People 1",
+    name:"Male",
   },
   {
     id: 2,
-    name: "Choose People 2",
-  },
-  {
-    id: 3,
-    name: "Choose People 3",
+    name: "Female",
   },
 ];
 
@@ -50,70 +50,76 @@ export const cardData = [
     id: 1,
     name: "Perfume Hello",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    price: 2500,
+      "Lorem Female is simply dummy text of the printing and typesetting industry.",
+    price: 10000,
     image: "/perfume1.png",
+    gender:"Female"
   },
   {
     id: 2,
     name: "Perfume Hi",
     description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
-    price: 2500,
+      "LoreF Male is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
+    price: 20000,
     image: "/perfume1.png",
+    gender:"Male"
   },
   {
     id: 3,
     name: "Perfume Hey",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    price: 2500,
+    price: 50000,
     image: "/perfume1.png",
+    gender:"Female"
   },
   {
     id: 4,
     name: "Perfume Hello",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    price: 2500,
+    price: 110000,
     image: "/perfume1.png",
+    gender:"Male"
   },
   {
     id: 5,
     name: "Perfume Hi",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    price: 2500,
+    price: 180000,
     image: "/perfume1.png",
+    gender:"Female"
   },
   {
     id: 6,
-    name: "Perfume hello",
+    name: "Perfume Hey",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    price: 2500,
+    price: 200000,
     image: "/perfume1.png",
+    gender:"Male"
   },
 ];
 
 //Payment Methods Data
-export const paymentNumberData=[
+export const paymentNumberData = [
   {
-    id:1,
-    name:"Owner Name",
-    phoneNumber:"09259649193",
-    image:"/k_pay.png",
+    id: 1,
+    name: "Owner Name",
+    phoneNumber: "09259649193",
+    image: "/k_pay.png",
   },
   {
-    id:2,
-    name:"Owner Name",
-    phoneNumber:"09259649193",
-    image:"/wave.png",
+    id: 2,
+    name: "Owner Name",
+    phoneNumber: "09259649193",
+    image: "/wave.png",
   },
   {
-    id:3,
-    name:"Owner Name",
-    phoneNumber:"09259649193",
-    image:"/mpu.png",
+    id: 3,
+    name: "Owner Name",
+    phoneNumber: "09259649193",
+    image: "/mpu.png",
   },
-]
+];

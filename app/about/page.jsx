@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import perfume1 from "@/public/perfume1.png";
-import { CardProviderContext } from "@/ContextProvider/ContextProvider";
+import { CardProviderContext } from "@/components/Providers/ContextProvider";
 import { useContext } from "react";
 import { cardData } from "@/lib/data";
 

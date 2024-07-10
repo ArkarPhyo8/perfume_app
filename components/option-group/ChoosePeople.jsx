@@ -1,12 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { choosePeopleData } from "@/lib/data";
 import { IoIosArrowDown } from "react-icons/io";
 import { AiFillCaretUp } from "react-icons/ai";
+import { CardProviderContext } from "../Providers/ContextProvider";
+import { cardData } from "@/lib/data";
 
-export default function ChoosePeople({setSelectedChoosePeople}) {
+export default function ChoosePeople({ setSelectedChoosePeople }) {
+  const { choosePeople, setChoosePeople, setBrandName, setChoosePrice } =
+    useContext(CardProviderContext);
   const [choosePeopleClick, setChoosePeopleClick] = useState(false);
-  const [choosePeople, setChoosePeople] = useState("");
   return (
     <>
       <li className="relative min-w-[180px] w-[250px]">
@@ -51,13 +54,14 @@ export default function ChoosePeople({setSelectedChoosePeople}) {
                   choosePeople === item.name && "bg-[#1E1B4B]"
                 }`}
                 onClick={() => {
-                  setChoosePeople(item.name);
                   setChoosePeopleClick(!choosePeopleClick);
-
                   setSelectedChoosePeople({
                     id: item.id,
                     name: item.name,
                   });
+                  setChoosePeople(item.name);
+                  setBrandName("");
+                  setChoosePrice("");
                 }}
               >
                 {item.name}

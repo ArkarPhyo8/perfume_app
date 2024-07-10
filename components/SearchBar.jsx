@@ -3,7 +3,7 @@ import search from "@/public/search.png";
 import Image from "next/image";
 import { useContext, useState } from "react";
 import { cardData } from "@/lib/data";
-import { CardProviderContext } from "@/ContextProvider/ContextProvider";
+import { CardProviderContext } from "@/components/Providers/ContextProvider";
 
 export default function SearchBar() {
   //Search State
