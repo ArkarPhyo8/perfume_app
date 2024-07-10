@@ -1,9 +1,26 @@
+"use client";
+import { CardProviderContext } from "@/ContextProvider/ContextProvider";
 import Button from "@/lib/button";
 import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 
 export default function BuyTable() {
+  const { buyCards } = useContext(CardProviderContext);
+  const [totalAmount, setTotalAmount] = useState(0)
+
+  useEffect(() => {
+    let total = 0;
+    buyCards.map((card) => {
+      const totalPrice = card.price * card.quantity;
+      total += totalPrice;
+    });
+    setTotalAmount(total);
+    
+  });
+  
+
   return (
-    <div className="bg-white h-[70vh] pb-6 col-span-3 rounded-md">
+    <div className="bg-white h-[70vh] pb-6 col-span-3 rounded-md sticky top-[120px]">
       <div className="bg-[#1E1B4B] rounded-t border-b border-[#DB2777]">
         <h1 className="text-[#DB2777] text-lg text-center py-4">
           <span className="text-3xl">O</span>nline{" "}
@@ -22,41 +39,17 @@ export default function BuyTable() {
           </tr>
         </thead>
         <tbody className="border-dashed border-b-2 border-slate-500">
-          <tr>
-            <td className="px-4 py-2 text-center">1.</td>
-            <td className="px-4 py-2 text-center">Perfume Name</td>
-            <td className="px-4 py-2 text-center">2</td>
-            <td className="px-4 py-2 text-right">24000 MMK</td>
-            <td className="px-4 py-2 text-right">45000 MMK</td>
-          </tr>
-          <tr>
-            <td className="px-4 py-2 text-center">2.</td>
-            <td className="px-4 py-2 text-center">Perfume Name</td>
-            <td className="px-4 py-2 text-center">4</td>
-            <td className="px-4 py-2 text-right">24000 MMK</td>
-            <td className="px-4 py-2 text-right">45000 MMK</td>
-          </tr>
-          <tr>
-            <td className="px-4 py-2 text-center">3.</td>
-            <td className="px-4 py-2 text-center">Perfume Name</td>
-            <td className="px-4 py-2 text-center">1</td>
-            <td className="px-4 py-2 text-right">24000 MMK</td>
-            <td className="px-4 py-2 text-right">45000 MMK</td>
-          </tr>
-          <tr>
-            <td className="px-4 py-2 text-center">4.</td>
-            <td className="px-4 py-2 text-center">Perfume Name</td>
-            <td className="px-4 py-2 text-center">6</td>
-            <td className="px-4 py-2 text-right">24000 MMK</td>
-            <td className="px-4 py-2 text-right">45000 MMK</td>
-          </tr>
-          <tr>
-            <td className="px-4 py-2 text-center">5.</td>
-            <td className="px-4 py-2 text-center">Perfume Name</td>
-            <td className="px-4 py-2 text-center">2</td>
-            <td className="px-4 py-2 text-right">24000 MMK</td>
-            <td className="px-4 py-2 text-right">45000 MMK</td>
-          </tr>
+          {buyCards.map((card, index) => (
+            <tr key={index}>
+              <td className="px-4 py-2 text-center">{index + 1}.</td>
+              <td className="px-4 py-2 text-center">{card.name}</td>
+              <td className="px-4 py-2 text-center">{card.quantity}</td>
+              <td className="px-4 py-2 text-right">{card.price.toLocaleString("en-Us")}</td>
+              <td className="px-4 py-2 text-right">
+                {(card.quantity * card.price).toLocaleString("en-Us")}
+              </td>
+            </tr>
+          ))}
         </tbody>
         <tfoot>
           <tr>
@@ -64,14 +57,14 @@ export default function BuyTable() {
             <td></td>
             <td></td>
             <td className="text-center text-lg font-bold">Total -</td>
-            <td className="text-right px-4 py-2 font-semibold">458920 MMK</td>
+            <td className="text-right px-4 py-2 font-semibold">{totalAmount.toLocaleString("en-Us")} Ks</td>
           </tr>
         </tfoot>
       </table>
 
       <div className="text-center mt-5">
         <Link href={"/payment_methods"}>
-          <Button text={"Payment Methods"}/>
+          <Button text={"Payment Methods"} />
         </Link>
       </div>
     </div>

@@ -2,36 +2,34 @@
 import Link from "next/link";
 import { cardData } from "@/lib/data";
 import { CardProviderContext } from "@/ContextProvider/ContextProvider";
-import { useContext, useState } from "react";
-import { useSession } from "next-auth/react";
+import { useContext } from "react";
 
 export default function HomePage() {
-const {data:session} =  useSession()
   //search state
   const { searchText, searchResult, buyCards, setBuyCards } =
     useContext(CardProviderContext);
 
-  //click to Buy
+  //click to Add Card
   const clickToBuy = (id) => {
-    const buyCard = cardData.filter((item) => {
-      if (item.id === id) {
-        if (item.quantity > 0) {
-          item["quantity"] = item.quantity + 1;
+    const buyCard = cardData.filter((cart) => {
+      if (cart.id === id) {
+        if (cart.quantity > 0) {
+          cart["quantity"] = cart.quantity + 1;
         } else {
-          item["quantity"] = 1;
+          cart["quantity"] = 1;
         }
-        return item.id === id;
+        return cart;
       }
     })[0];
-
-    if(buyCards){
-      const check=buyCards.includes(buyCard)
-      if(check){
-        return
-      }else{
-      setBuyCards([...buyCards, buyCard]);
+      console.log(buyCard);
+    if (buyCards) {
+      const check = buyCards.includes(buyCard);
+      if (check) {
+        return;
+      } else {
+        setBuyCards([...buyCards, buyCard]);
       }
-    }else{
+    } else {
       setBuyCards([...buyCards, buyCard]);
     }
   };
@@ -83,9 +81,11 @@ const {data:session} =  useSession()
                             {card.price}
                           </span>
                         </div>
-                        <Link href={"/about"}>
+                        <Link
+                          href={{ pathname: "/about", query: { id: card.id } }}
+                        >
                           <button className="bg-primary py-2 px-4 rounded-md text-white font-semibold hover:bg-[#c21c69] transition-colors duration-200">
-                            {card.readButton}
+                            Read More
                           </button>
                         </Link>
                       </div>
@@ -93,7 +93,7 @@ const {data:session} =  useSession()
                         onClick={() => clickToBuy(card.id)}
                         className="bg-[#1D4ED8] text-white text-xl font-medium py-2 rounded-md hover:bg-[#19388e] transition-colors duration-200"
                       >
-                        {card.buyButton}
+                        Add to Cart
                       </button>
                     </div>
                   </div>
@@ -135,9 +135,9 @@ const {data:session} =  useSession()
                             {card.price}
                           </span>
                         </div>
-                        <Link href={"/about"}>
+                        <Link href={{ pathname: "/about", query: { id: card.id } }}>
                           <button className="bg-primary py-2 px-4 rounded-md text-white font-semibold hover:bg-[#c21c69] transition-colors duration-200">
-                            {card.readButton}
+                            Read More
                           </button>
                         </Link>
                       </div>
@@ -145,7 +145,7 @@ const {data:session} =  useSession()
                         onClick={() => clickToBuy(card.id)}
                         className="bg-[#1D4ED8] text-white text-xl font-medium py-2 rounded-md hover:bg-[#19388e] transition-colors duration-200"
                       >
-                        {card.buyButton}
+                        Add to Cart
                       </button>
                     </div>
                   </div>

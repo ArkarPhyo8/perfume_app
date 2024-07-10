@@ -1,12 +1,42 @@
+"use client";
 import Image from "next/image";
 import perfume1 from "@/public/perfume1.png";
+import { CardProviderContext } from "@/ContextProvider/ContextProvider";
+import { useContext } from "react";
+import { cardData } from "@/lib/data";
 
-export default function AboutPage() {
+export default function AboutPage({ searchParams }) {
+  // console.log(searchParams.id);
+  const { buyCards, setBuyCards } = useContext(CardProviderContext);
+  const clickToBuy = () => {
+    const buyCard = cardData.filter((cart) => {
+      if (cart.id === Number(searchParams.id)) {
+        if (cart.quantity > 0) {
+          cart["quantity"] = cart.quantity + 1;
+        } else {
+          cart["quantity"] = 1;
+        }
+        return cart;
+      }
+    })[0];
+    if (buyCard) {
+      const check = buyCards.includes(buyCard);
+      if (check) {
+        return;
+      } else {
+        setBuyCards([...buyCards, buyCard]);
+      }
+    } else {
+      setBuyCards([...buyCards, buyCard]);
+    }
+  };
   return (
     <div className="bg-[#1A062D] w-full h-screen px-[240px] pt-8">
       <div className="bg-[#2E1065] flex gap-5 rounded-md px-4 py-8">
-        <Image src={perfume1} alt="perfume1" 
-        className="bg-white rounded-md w-[200px] h-[200px]"
+        <Image
+          src={perfume1}
+          alt="perfume1"
+          className="bg-white rounded-md w-[200px] h-[200px]"
         />
         <div className="flex flex-col gap-5">
           <h1 className="text-primary text-xl font-medium">Perfume Name</h1>
@@ -21,8 +51,11 @@ export default function AboutPage() {
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
           </p>
-          <button className="bg-button-color text-white text-lg font-medium px-4 py-2 rounded-md w-[20%]">
-            Buy Now
+          <button
+            onClick={clickToBuy}
+            className="bg-button-color text-white text-lg font-medium px-4 py-2 rounded-md w-[20%]"
+          >
+            Add to Card
           </button>
         </div>
       </div>

@@ -2,15 +2,15 @@
 export const brandNameData = [
   {
     id: 1,
-    name: "Brand Name 1",
+    name: "Hi",
   },
   {
     id: 2,
-    name: "Brand Name 2",
+    name: "Hello",
   },
   {
     id: 3,
-    name: "Brand Name 3",
+    name: "Hey",
   },
 ];
 //Select option choosePrice data
@@ -52,8 +52,6 @@ export const cardData = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
     price: 2500,
-    readButton: "Read More",
-    buyButton: "Buy Now",
     image: "/perfume1.png",
   },
   {
@@ -62,8 +60,6 @@ export const cardData = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
     price: 2500,
-    readButton: "Read More",
-    buyButton: "Buy Now",
     image: "/perfume1.png",
   },
   {
@@ -72,8 +68,6 @@ export const cardData = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     price: 2500,
-    readButton: "Read More",
-    buyButton: "Buy Now",
     image: "/perfume1.png",
   },
   {
@@ -82,8 +76,6 @@ export const cardData = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     price: 2500,
-    readButton: "Read More",
-    buyButton: "Buy Now",
     image: "/perfume1.png",
   },
   {
@@ -92,8 +84,6 @@ export const cardData = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     price: 2500,
-    readButton: "Read More",
-    buyButton: "Buy Now",
     image: "/perfume1.png",
   },
   {
@@ -102,8 +92,6 @@ export const cardData = [
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
     price: 2500,
-    readButton: "Read More",
-    buyButton: "Buy Now",
     image: "/perfume1.png",
   },
 ];
