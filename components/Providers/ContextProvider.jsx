@@ -62,6 +62,7 @@ export default function ContextProvider({ children }) {
         setChoosePeople,
 
         optionFilterData,
+        setOptionFilterData,
       }}
     >
       {children}

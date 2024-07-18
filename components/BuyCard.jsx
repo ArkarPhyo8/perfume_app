@@ -25,23 +25,19 @@ export default function BuyCard() {
       }
       return card;
     });
-    setBuyCards([ ...increaseCard]);
+    setBuyCards([...increaseCard]);
   };
 
   const decreased = (id) => {
-    const decreaseCard= buyCards.map((card) => {
+    const decreaseCard = buyCards.map((card) => {
       if (card.id === id) {
         if (card.quantity >= 2) {
           card["quantity"] = card.quantity - 1;
         }
       }
-      return card
-      
+      return card;
     });
     setBuyCards([...decreaseCard]);
-    
- 
-    
   };
 
   return (
@@ -74,7 +70,7 @@ export default function BuyCard() {
                   <span>Price</span>
                   <span>-</span>{" "}
                 </div>{" "}
-                <span>{card.price} MMK</span>{" "}
+                <span>{card.price.toLocaleString("en-Us")} MMK</span>{" "}
               </div>
 
               <div className="border-solid border-t border-slate-50">
@@ -91,11 +87,17 @@ export default function BuyCard() {
               <div className="border-solid border-t border-slate-50">
                 {" "}
                 <div className="w-[40%] flex items-center gap-8 px-5 py-3">
-                  <span onClick={() => decreased(card.id)} className="cursor-pointer">
+                  <span
+                    onClick={() => decreased(card.id)}
+                    className="cursor-pointer"
+                  >
                     <AiOutlineMinusCircle />
                   </span>
                   <span>{card.quantity}</span>
-                  <span onClick={() => increased(card.id)} className="cursor-pointer">
+                  <span
+                    onClick={() => increased(card.id)}
+                    className="cursor-pointer"
+                  >
                     <AiOutlinePlusCircle />
                   </span>{" "}
                 </div>
@@ -108,19 +110,26 @@ export default function BuyCard() {
                     <span>Total</span>
                     <span>-</span>
                   </div>
-                  <span>{(card.price * card.quantity).toLocaleString("en-Us")} Ks</span>{" "}
+                  <span>
+                    {(card.price * card.quantity).toLocaleString("en-Us")} Ks
+                  </span>{" "}
                 </div>
               </div>
             </div>
           </div>
         ))
       ) : (
-        <div className="mt-[40%]">
-          <div className="flex flex-col gap-5 justify-center">
-            <div className="text-white text-xl">Can't Choose Cards</div>
-            <Link href={"/"}>
-              <Button text={"Choose Cards"} />
-            </Link>
+        <div>
+          <h1 className="text-3xl text-white font-semibold">Shopping Cart</h1>
+          <div className="mt-[25%]">
+            <div className="flex flex-col gap-5 justify-center">
+              <div className="text-white text-xl">
+                Your shopping cart is empty.{" "}
+              </div>
+              <Link href={"/"}>
+                <Button text={"Click to add Carts"} />
+              </Link>
+            </div>
           </div>
         </div>
       )}

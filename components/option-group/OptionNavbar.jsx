@@ -16,8 +16,13 @@ export default function SearchNavbar() {
   const [selectedChoosePeople, setSelectedChoosePeople] = useState("");
 
   //Home Page data to show all
-  const { setSearchText, setBrandName, setChoosePrice,setChoosePeople } =
-    useContext(CardProviderContext);
+  const {
+    setSearchText,
+    setBrandName,
+    setChoosePrice,
+    setChoosePeople,
+    setOptionFilterData,
+  } = useContext(CardProviderContext);
 
   useEffect(() => {
     setSelectedObjects([
@@ -31,8 +36,12 @@ export default function SearchNavbar() {
   const [changeBgColor, setChangeBgColor] = useState(false);
 
   const clickToShowAll = () => {
-    setSearchText("");
     setChangeBgColor(true);
+    setSearchText("");
+    setBrandName("");
+    setChoosePrice("");
+    setChoosePeople("");
+    setOptionFilterData("");
   };
   return (
     <>
@@ -49,16 +58,7 @@ export default function SearchNavbar() {
                   : "bg-[#1E1B4B] border-[#1E1B4B] hover:bg-[#6d54e0] hover:border-[#6d54e0]"
               }`}
             >
-              <Link
-                href={"/"}
-                onClick={() => {
-                  setBrandName("");
-                  setChoosePrice("");
-                  setChoosePeople("");
-                }}
-              >
-                All
-              </Link>
+              <Link href={"/"}>All</Link>
             </li>
 
             <BrandName setSelectedBrandName={setSelectedBrandName} />

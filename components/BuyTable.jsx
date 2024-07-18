@@ -20,7 +20,8 @@ export default function BuyTable() {
   
 
   return (
-    <div className="bg-white h-[70vh] pb-6 col-span-3 rounded-md sticky top-[120px]">
+    <div className="bg-white h-[70vh] col-span-3 rounded-md sticky top-[120px] flex flex-col justify-between">
+      <div>
       <div className="bg-[#1E1B4B] rounded-t border-b border-[#DB2777]">
         <h1 className="text-[#DB2777] text-lg text-center py-4">
           <span className="text-3xl">O</span>nline{" "}
@@ -61,10 +62,11 @@ export default function BuyTable() {
           </tr>
         </tfoot>
       </table>
+      </div>
 
-      <div className="text-center mt-5">
-        <Link href={"/payment_methods"}>
-          <Button text={"Payment Methods"} />
+      <div className="text-center mb-1">
+        <Link href={"/checkout"}>
+          <Button text={"Checkout"} />
         </Link>
       </div>
     </div>

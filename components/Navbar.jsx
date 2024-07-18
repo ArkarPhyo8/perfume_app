@@ -5,13 +5,14 @@ import cart from "../public/cart.png";
 import setting from "../public/setting.png";
 import Link from "next/link";
 import { CardProviderContext } from "@/components/Providers/ContextProvider";
-import { Suspense, useContext } from "react";
+import { useContext } from "react";
 import { signOut, useSession } from "next-auth/react";
 
 export default function Navbar() {
   //Buy State
   const { buyCards } = useContext(CardProviderContext);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  // console.log(session?.user.email);
 
   return (
     <>
@@ -41,20 +42,33 @@ export default function Navbar() {
 
           <div className="flex gap-5 items-center">
             <Image className="w-[30px] h-[30px]" src={search} alt="search" />
-            <Link href={"/login"}>
-              {session?.user?.name ? (
-                <button
-                  onClick={() => signOut()}
-                  className="bg-[#DB2777] px-3 py-1 rounded-md text-[#D9D9D9] text-xl"
-                >
-                  Sign Out
-                </button>
-              ) : (
-                <button className="bg-[#DB2777] px-3 py-1 rounded-md text-[#D9D9D9] text-xl">
-                  Sign In
-                </button>
-              )}
-            </Link>
+
+            <div className="flex gap-2">
+              <div>
+                <Link href={"/register"}>
+                  <button className="bg-[#DB2777] hover:bg-[#be0e5d] px-3 py-1 rounded-md text-[#D9D9D9] text-xl">
+                    Register
+                  </button>
+                </Link>
+              </div>
+              <div className="border border-white"></div>
+              <div>
+                {session?.user?.email ? (
+                  <button
+                    onClick={() => signOut()}
+                    className="px-1 py-1 rounded-md text-[#D9D9D9] text-xl"
+                  >
+                    Sign Out
+                  </button>
+                ) : (
+                  <Link href={"/signIn"}>
+                    <button className="px-1 py-1 rounded-md text-[#D9D9D9] text-xl">
+                      Sing In
+                    </button>
+                  </Link>
+                )}
+              </div>
+            </div>
 
             <Link href={"/buy_card"}>
               <div className="relative">
