@@ -1,12 +1,15 @@
-"use client"
+"use client";
 import { createContext, useState } from "react";
 
 export const checkContextProvider = createContext(null);
 export default function CheckProvider({ children }) {
-  //check modal open && close
-  const [checkModal, setCheckModal] = useState(false);
+  const [checkAdminLogin, setCheckAdminLogin] = useState(false);
+  console.log(checkAdminLogin);
+
   return (
-    <checkContextProvider.Provider value={{setCheckModal, checkModal}}>
+    <checkContextProvider.Provider
+      value={{ checkAdminLogin, setCheckAdminLogin }}
+    >
       {children}
     </checkContextProvider.Provider>
   );

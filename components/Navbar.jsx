@@ -5,12 +5,21 @@ import cart from "../public/cart.png";
 import setting from "../public/setting.png";
 import Link from "next/link";
 import { CardProviderContext } from "@/components/Providers/ContextProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
+import Setting from "./setting/setting";
+import { checkContextProvider } from "./Providers/CheckProvider";
+import AdminLogin from "./modals/adminLogin";
 
 export default function Navbar() {
   //Buy State
   const { buyCards } = useContext(CardProviderContext);
+
+  //check admin login state
+  const { checkAdminLogin, setCheckAdminLogin } =
+    useContext(checkContextProvider);
+
+  const [checkSetting, setCheckSetting] = useState(false);
   const { data: session, status } = useSession();
   // console.log(session?.user.email);
 
@@ -43,6 +52,30 @@ export default function Navbar() {
           <div className="flex gap-5 items-center">
             <Image className="w-[30px] h-[30px]" src={search} alt="search" />
 
+            <Link href={"/buy_card"}>
+              <div className="relative">
+                <Image className=" w-[30px] h-[30px]" src={cart} alt="cart" />
+                {buyCards.length > 0 && (
+                  <div className="bg-[#CC0000] w-[30px] min-w-fit h-[30px] min-h-fit rounded-full absolute -top-5 -right-4 text-center">
+                    <span className="text-white text-xl font-medium p-2">
+                      {buyCards.length}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </Link>
+
+            <div
+              className="cursor-pointer"
+              onClick={() => setCheckSetting(!checkSetting)}
+            >
+              <Image
+                className="w-[30px] h-[30px]"
+                src={setting}
+                alt="setting"
+              />
+            </div>
+
             <div className="flex gap-2">
               <div>
                 <Link href={"/register"}>
@@ -69,24 +102,20 @@ export default function Navbar() {
                 )}
               </div>
             </div>
-
-            <Link href={"/buy_card"}>
-              <div className="relative">
-                <Image className=" w-[30px] h-[30px]" src={cart} alt="cart" />
-                {buyCards.length > 0 && (
-                  <div className="bg-[#CC0000] w-[30px] min-w-fit h-[30px] min-h-fit rounded-full absolute -top-5 -right-4 text-center">
-                    <span className="text-white text-xl font-medium p-2">
-                      {buyCards.length}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </Link>
-
-            <Image className="w-[30px] h-[30px]" src={setting} alt="setting" />
           </div>
         </div>
       </header>
+      <div className="fixed w-full z-50">
+        <Setting checkSetting={checkSetting} setCheckSetting={setCheckSetting} />
+      </div>
+
+      {checkAdminLogin && (
+        <div className="fixed w-full z-50 inset-0 backdrop-blur-sm bg-slate-900 bg-opacity-25">
+          <div className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] text-white">
+            <AdminLogin />
+          </div>
+        </div>
+      )}
     </>
   );
 }

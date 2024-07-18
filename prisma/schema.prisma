@@ -18,8 +18,15 @@ model User {
   name           String
   email          String
   hashedPassword String?
-  role  Role    @default(USER)
-  
+  role           Role    @default(USER)
+}
+
+model Admin {
+  id             String  @id @default(auto()) @map("_id") @db.ObjectId
+  name           String
+  email          String
+  hashedPassword String?
+  role           Role    @default(ADMIN)
 }
 
 enum Role {

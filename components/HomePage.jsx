@@ -6,7 +6,6 @@ import { useContext, useState } from "react";
 // import { useRouter } from "next/navigation";
 
 export default function HomePage() {
-  // const [modalConfirm, setModalConfirm] = useState(false);
   //search state
   const { searchText, searchResult, buyCards, setBuyCards, optionFilterData } =
     useContext(CardProviderContext);
@@ -36,12 +35,9 @@ export default function HomePage() {
     }
   };
 
-  //Navigation
-  // const router = useRouter();
 
   return (
-    <>
-
+    <> 
       <div className="bg-[#1E1B4B] w-full h-auto py-5">
         <h1 className="text-primary text-2xl font-semibold text-center">
           {" "}
