@@ -24,8 +24,8 @@ export default function RegisterModal() {
     });
 
     if (res.ok) {
-      console.log("success");
       setCheckAdminLogin(!checkAdminLogin)
+      router.push("/")
     } else setError(true);
   };
   return (

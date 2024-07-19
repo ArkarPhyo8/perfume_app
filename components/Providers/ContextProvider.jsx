@@ -10,7 +10,7 @@ export default function ContextProvider({ children }) {
   const [searchResult, setSearchResult] = useState("");
 
   //Option Search State
-  const [optionFilterData, setOptionFilterData] = useState("")
+  const [optionFilterData, setOptionFilterData] = useState("");
 
   //Buy State
   const [buyCards, setBuyCards] = useState([]);
@@ -23,6 +23,9 @@ export default function ContextProvider({ children }) {
 
   //People Option
   const [choosePeople, setChoosePeople] = useState("");
+
+  //Admin Data
+  const [adminInfo, setAdminInfo] = useState("");
 
   useEffect(() => {
     if (brandName || choosePrice || choosePeople) {
@@ -63,6 +66,9 @@ export default function ContextProvider({ children }) {
 
         optionFilterData,
         setOptionFilterData,
+
+        adminInfo,
+        setAdminInfo,
       }}
     >
       {children}

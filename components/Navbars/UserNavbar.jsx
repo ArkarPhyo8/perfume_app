@@ -1,17 +1,17 @@
 "use client";
 import Image from "next/image";
-import search from "../public/search.png";
-import cart from "../public/cart.png";
-import setting from "../public/setting.png";
+import search from "@/public/search.png";
+import cart from "@/public/cart.png";
+import setting from "@/public/setting.png";
 import Link from "next/link";
 import { CardProviderContext } from "@/components/Providers/ContextProvider";
 import { useContext, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
-import Setting from "./setting/setting";
-import { checkContextProvider } from "./Providers/CheckProvider";
-import AdminLogin from "./modals/adminLogin";
+import Setting from "../setting/setting";
+import { checkContextProvider } from "../Providers/CheckProvider";
+import AdminLogin from "../modals/adminLogin";
 
-export default function Navbar() {
+export default function UserNavbar() {
   //Buy State
   const { buyCards } = useContext(CardProviderContext);
 
